@@ -1,0 +1,14 @@
+{
+  "name": "cordovamail-scraper",
+  "version": "0.0.1",
+  "description": "scrape cordova dev mails",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Murat Sutunc",
+  "license": "MIT",
+  "dependencies": {
+    "request": "^2.48.0"
+  }
+}
