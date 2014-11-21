@@ -1,4 +1,3 @@
-var express = require('express');
 var fs = require('fs');
 var path = require('path');
 var request = require('request');
@@ -17,9 +16,11 @@ function downloadMonth(month, year) {
         return Q.promise(function(resolve, reject) {
             var json = JSON.parse(parser.toJson(html));
             try {
-                if (!fs.existsSync(path.join(process.cwd(), year + ""))) 
-                    fs.mkdirSync(path.join(process.cwd(), year + ""));
-                fs.writeFileSync(path.join(process.cwd(), year + "", month + ".json"), JSON.stringify(json));
+                if (!fs.existsSync(path.join(process.cwd(), "data"))) 
+                    fs.mkdirSync(path.join(process.cwd(), "data"));
+                if (!fs.existsSync(path.join(process.cwd(), "data", year + ""))) 
+                    fs.mkdirSync(path.join(process.cwd(),"data", year + ""));
+                fs.writeFileSync(path.join(process.cwd(), "data", year + "", month + ".json"), JSON.stringify(json));
                 resolve(json);
             } catch (error) {
                 console.log(error);
@@ -37,7 +38,7 @@ function downloadMessages(year, month, id, date) {
     var subUrl = 'http://mail-archives.apache.org/mod_mbox/cordova-dev/2014' + (month < 10?"0"+month:month) + '.mbox/raw/'
 
     request(subUrl + id, function(error, response, html){
-        fs.writeFileSync(path.join(process.cwd(), year + "", date + ".dat"), html);
+        fs.writeFileSync(path.join(process.cwd(), "data", year + "", date + ".dat"), html);
     })
 }
 

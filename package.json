@@ -9,6 +9,7 @@
   "author": "Murat Sutunc",
   "license": "MIT",
   "dependencies": {
-    "request": "^2.48.0"
+    "request": "^2.48.0",
+    "xml2json": "^0.5.1"
   }
 }
